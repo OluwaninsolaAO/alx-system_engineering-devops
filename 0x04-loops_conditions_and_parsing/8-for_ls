@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# A simple bash script that displays:
+# - The content of the current directory.
+# - In a list format.
+# - Where only the part of the name after
+#   the first dash is displayed.
+
+LIST=$(ls)
+FILE="dir_dump"
+
+for list in $LIST;
+do
+	echo "$list" > "$FILE"
+	cut -f 2 -d - "$FILE"
+	rm "$FILE"
+done
