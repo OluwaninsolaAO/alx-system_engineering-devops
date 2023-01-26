@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# A simple bash script that displays ``Best School``
+# 10 times, but for the 9th time prints ``Hi`` after
+# ``Best School`` on a new line.
+
+counter=1
+
+while [ $counter -le 10 ]
+do
+	echo "Best School"
+	if [ $counter -eq 9 ]
+	then
+		echo "Hi"
+	fi
+	(( counter++ ))
+done
