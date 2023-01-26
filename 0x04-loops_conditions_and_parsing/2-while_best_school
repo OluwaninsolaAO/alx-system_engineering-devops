@@ -7,5 +7,5 @@ counter=0
 while [ $counter -lt 10 ]
 do
 	echo "Best School"
-	let "counter = $counter + 1"
+	(( counter = counter + 1 ))
 done
