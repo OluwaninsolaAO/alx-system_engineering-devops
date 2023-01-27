@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# A simple bash script that prints ``To infitity and
+# beyond`` to infinity and beyond.
+
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
