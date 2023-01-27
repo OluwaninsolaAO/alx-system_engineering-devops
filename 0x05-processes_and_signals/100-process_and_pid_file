@@ -10,11 +10,18 @@
 # - Deletes the file ``/var/run/myscript.pid`` and terminates
 #   itself when receiving a ``SIGQUIT`` or ``SIGTERM`` signal.
 
-pgrep -f "$0" > /var/run/myscript.id
+FILENAME="/var/run/myscript.pid"
+cleanup() {
+	rm "$FILENAME"
+	exit
+}
+
+pgrep -f "$0" > "$FILENAME"
 while true
 do
 	echo "To infinity and beyond"
-	trap 'echo "I hate the kill command"' SIGTERM
-	trap 'echo "Y U no love me?!' SIGINT
-	trap 'rm "/var/run/myscript.pid"' SIGQUIT SIGTERM
+	sleep 2
+	trap 'echo "I hate the kill command"; cleanup' SIGTERM
+	trap 'echo "Y U no love me?!"' SIGINT
+	trap 'cleanup' SIGQUIT
 done
