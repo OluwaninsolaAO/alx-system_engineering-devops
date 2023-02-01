@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# A simple bash script that pings an IP address passed as
+# an argument to the script.
+
+if (( $# != 1 ))
+then
+	echo "Usage: $0 {IP_ADDRESS}"
+	exit
+fi
+
+ping -c 5 "$1"
