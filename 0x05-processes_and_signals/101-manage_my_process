@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# This script manages ``manage_my_process`` using positional
+# arguements such as ``start``, ``stop`` and ``restart``.
+
+PID_F="/var/run/my_process.pid"
+error_msg="Usage: manage_my_process {start|stop|restart}"
+function start_p {
+	sudo bash -c "./manage_my_process &"
+	echo "$!" > "$PID_F"
+	echo "manage_my_process started"
+}
+
+function stop_p {
+	while read -r line
+	do
+		kill -9 "$line"
+	done < "$PID_F"
+	rm "$PID_F"
+	echo "manage_my_process stopped"
+}
+
+function restart_p {
+	stop_p &> /dev/null   # ``&> /dev/null`` redirects any outputs
+	start_p &> /dev/null  # from the called functions to be discarded.
+	echo "manage_my_process restarted"
+}
+
+if [ "$#" -ne "1" ]
+then
+	echo "$error_msg"
+	exit 1
+fi
+
+case "$1" in
+	"start")
+		start_p
+		;;
+	"stop")
+		stop_p
+		;;
+	"restart")
+		restart_p
+		;;
+	*)
+		echo "$error_msg"
+		;;
+esac
+exit 0

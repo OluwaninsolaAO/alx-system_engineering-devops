@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This scripts writes ``I am alive!`` indefinitely recursively into a file.
+
+FILE="/tmp/my_process"
+
+function alive {
+	# recursive function that prints ``I am alive`` into a file,
+	# for every 2 seconds.
+	echo "I am alive!" >> "$FILE"
+	sleep 2
+	alive
+}
+
+alive
