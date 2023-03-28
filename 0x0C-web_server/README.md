@@ -16,3 +16,52 @@ Some of the popular web servers include Apache HTTP Server,
 Nginx, Microsoft IIS, and Google Web Server.
 
 In this section, how to setup and configure nginx will be explored.
+
+
+### SCP (Secure Copy)
+
+SCP (Secure Copy) is a command-line tool used for securely transferring
+files between two remote hosts over a secure shell (SSH) protocol. It is
+a way of copying files and directories between two computers on a network.
+
+To use SCP, you need to have SSH access to the remote host, and the remote
+host must also have an SSH server running. The syntax for using SCP is as
+follows:
+
+```
+$ scp [options] [source] [destination]
+```
+
+Here's a breakdown of the different parts of the command:
+
+- `[options]`: This is an optional parameter that specifies any additional
+options you want to use with the SCP command. Some commonly used options
+include `-r` (recursively copy directories), `-P` (specify a non-default
+SSH port), and -v (verbose output).
+
+- `[source]`: This is the file or directory that you want to copy. It can
+be a local file or a remote file specified in the format
+`user@remote_host:/path/to/file`.
+
+- `[destination]`: This is the location where you want to copy the file to.
+It can be a local directory or a remote directory specified in the format
+`user@remote_host:/path/to/destination`.
+
+Here's an example command that copies a file named `example.txt` from the
+local machine to a remote server:
+
+```
+$ scp example.txt username@remote_host:/path/to/destination
+```
+
+And here's an example command that copies a directory named `myfolder`
+from the remote server to the local machine:
+
+```
+$ scp -r username@remote_host:/path/to/myfolder /path/to/local/destination
+```
+
+> Note that when copying files or directories between remote hosts, you
+will need to use the -3 option to route the transfer through your
+local machine. Overall, SCP is a simple and secure way to transfer files
+between hosts.
