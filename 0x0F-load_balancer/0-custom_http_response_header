@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Installs nginx web server
+
+# sudo apt-get update
+# sudo apt-get -y install nginx
+
+sudo echo "Hello World!" > /var/www/html/index.html
+
+SERVER=$(hostname | sed 's/^[0-9]*-//')
+
+SERVER_CONFIG=\
+"server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+		add_header X-Served-By '$SERVER';
+                try_files \$uri \$uri/ =404;
+        }
+}"
+
+bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
+
+sudo /etc/init.d/nginx restart
