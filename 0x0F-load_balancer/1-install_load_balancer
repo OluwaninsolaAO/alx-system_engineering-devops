@@ -9,14 +9,11 @@ sudo apt-get install haproxy=2.7.\*
 # Configure haproxy
 sudo cat << EOF >> /etc/haproxy/haproxy.cfg
 
-frontend www
+listen load_balancer
         bind :80
 	mode http
 	option httpclose
 	option forwardfor
-        default_backend webservers
-
-backend webservers
         balance roundrobin
         server 148073-web-01 52.87.153.4:80 check
         server 148073-web-02 100.25.137.85:80 check
