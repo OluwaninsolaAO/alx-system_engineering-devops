@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Installs nginx web server
+# Double the number of webservers
 
-# sudo apt-get update
-# sudo apt-get -y install nginx
+sudo apt-get update
+sudo apt-get -y install nginx
 
 sudo echo "Hello World!" > /var/www/html/index.html
 
