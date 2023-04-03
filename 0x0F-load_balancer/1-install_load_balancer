@@ -11,6 +11,9 @@ sudo cat << EOF >> /etc/haproxy/haproxy.cfg
 
 frontend www
         bind :80
+	mode http
+	option httpclose
+	option forwardfor
         default_backend webservers
 
 backend webservers
