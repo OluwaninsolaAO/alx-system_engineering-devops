@@ -7,7 +7,7 @@ sudo add-apt-repository ppa:vbernat/haproxy-2.7
 sudo apt-get install haproxy=2.7.\*
 
 # Configure haproxy
-sudo cat << EOF >> /etc/haproxy/haproxy.cfg
+cat << EOF | sudo tee -a /etc/haproxy/haproxy.cfg
 
 listen load_balancer
         bind :80
