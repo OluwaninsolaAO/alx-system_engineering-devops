@@ -1,5 +1,9 @@
 # Add a custom HTTP header with Puppet
 
+exec { 'install-stdlib':
+  command => 'sudo puppet module install puppetlabs-stdlib',
+}
+
 include stdlib
 
 exec { 'apt-update':
@@ -19,5 +23,5 @@ file_line { 'add_header':
 
 service { 'nginx':
   ensure  => 'running',
-  require => Pakage['nginx'],
+  require => Package['nginx'],
 }
