@@ -13,7 +13,7 @@ package { 'nginx':
 file_line { 'add_header':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
-  line   => "\tadd_header X-Served-By ${hostname};",
+  line   => "\t\tadd_header X-Served-By ${hostname};",
   after  => 'location / {',
 }
 
