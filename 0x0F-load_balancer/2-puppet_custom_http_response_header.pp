@@ -17,12 +17,6 @@ file_line { 'add_header':
   after  => 'include \/etc\/nginx\/sites-enabled\/\*;',
 }
 
-service { 'nginx':
-  ensure  => 'running',
-  enable  => 'true',
-  require => Package['nginx'],
-}
-
 exec { 'restart-nginx':
   command => '/etc/init.d/nginx restart',
 }
