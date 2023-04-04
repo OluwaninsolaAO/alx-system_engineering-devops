@@ -1,9 +1,5 @@
 # Add a custom HTTP header with Puppet
 
-exec { 'install-stdlib':
-  command => 'sudo puppet module install puppetlabs-stdlib',
-}
-
 include stdlib
 
 exec { 'apt-update':
