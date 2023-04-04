@@ -22,3 +22,7 @@ service { 'nginx':
   enable  => 'true',
   require => Package['nginx'],
 }
+
+exec { 'restart-nginx':
+  command => '/etc/init.d/nginx restart',
+}
