@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # Nginx likes port 80 -- debugbing nginx not running on port 80
-
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-
 sudo /etc/init.d/nginx restart
