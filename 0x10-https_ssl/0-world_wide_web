@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# displays information about subdomains
+
+audit() {  # audits domain passed as argument
+	dig $1.$2 +noall +answer > .tmp
+	awk -v var="$1" '{ print "The subdomain " var " is a " $4 " record and points to " $5 }' .tmp
+	rm .tmp
+}
+
+if [ -z "$2" ]  # if subdomain is not defined
+then
+	subdomains=("www" "lb-01" "web-01" "web-02")
+	for sub in "${subdomains[@]}"
+	do
+		audit $sub $1
+	done
+else
+	audit $2 $1
+fi
