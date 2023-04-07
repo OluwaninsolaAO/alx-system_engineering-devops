@@ -7,13 +7,14 @@ audit() {  # audits domain passed as argument
 	rm .tmp
 }
 
-if [ -z "$2" ]  # if subdomain is not defined
+if [ "$#" == 1 ]  # if subdomain is not defined
 then
 	subdomains=("www" "lb-01" "web-01" "web-02")
 	for sub in "${subdomains[@]}"
 	do
 		audit $sub $1
 	done
-else
+elif [ "$#" == 2 ]
+then
 	audit $2 $1
 fi
