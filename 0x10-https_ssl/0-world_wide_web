@@ -12,9 +12,9 @@ then
 	subdomains=("www" "lb-01" "web-01" "web-02")
 	for sub in "${subdomains[@]}"
 	do
-		audit $sub $1
+		audit $sub "$1"
 	done
 elif [ "$#" == 2 ]
 then
-	audit $2 $1
+	audit "$2" "$1"
 fi
