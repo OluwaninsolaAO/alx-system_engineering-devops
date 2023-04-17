@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Run Nginx as Nginx
+
+# allow nginx user account to read nginx.conf
+chmod 644 /etc/nginx/nginx.conf
+
+# update nginx listening from :80 to :8080
+sed -i 's/80/8080/' /etc/nginx/sites-available/default
+
+# kill apache2 listing on :8080
+pkill apache2
+
+# restart nginx using nginx user account
+su nginx -c '/etc/init.d/nginx restart'
