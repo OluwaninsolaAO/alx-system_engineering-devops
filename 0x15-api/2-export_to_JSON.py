@@ -28,11 +28,11 @@ if __name__ == '__main__':
 
     for todo in user_todos:
         obj = {"task": todo['title'], "completed": todo['completed'],
-                "username": user['username']}
+               "username": user['username']}
         tasks.append(obj)
     user_data = {userId: tasks}
 
     #  write user_todos to a JSON file
     fname = str(userId) + '.json'
     with open(fname, 'w', encoding='utf-8') as f:
-            json.dump(user_data, f)
+        json.dump(user_data, f)
