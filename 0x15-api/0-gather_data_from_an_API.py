@@ -26,10 +26,7 @@ if __name__ == '__main__':
     todos_total = len(user_todos)
     todos_completed = sum(todo['completed'] for todo in user_todos)
 
-    print(todos_total)
-    print(todos_completed)
-
     print('Employee {} is done with tasks({}/{}):'.format(
-          user.name, todos_completed, todos_total))
-    for todo in [todo for todo in users_todos if todo['completed']]:
+          user['name'], todos_completed, todos_total))
+    for todo in [todo for todo in user_todos if todo['completed']]:
         print('\t {}'.format(todo['title']))
