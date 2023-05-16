@@ -1,0 +1,22 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /data/web_static/current;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                add_header X-Served-By 148073-web-01;
+        }
+
+        location /hbnb_static {
+                add_header X-Served-By 148073-web-01;
+                alias /data/web_static/current;
+        }
+
+        location /airbnb-onepage/ {
+                proxy_pass http://localhost:5000;
+        }
+}
