@@ -14,8 +14,8 @@ Environment="HBNB_MYSQL_PWD=hbnb_dev_pwd"
 Environment="HBNB_MYSQL_HOST=localhost"
 Environment="HBNB_MYSQL_DB=hbnb_dev_db"
 Environment="HBNB_TYPE_STORAGE=db"
-StandardError=/tmp/airbnb-error.log
-StandardOutput=/tmp/airbnb-access.log
+StandardError=file:/tmp/airbnb-error.log
+StandardOutput=file:/tmp/airbnb-access.log
 
 [Install]
 WantedBy=multi-user.target
