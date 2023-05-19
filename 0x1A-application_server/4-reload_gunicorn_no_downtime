@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# 7. No service interruption
+
+kill -HUP "$(pgrep -f gunicorn)"
